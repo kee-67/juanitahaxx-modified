@@ -130,7 +130,7 @@ do
         local FrameCount = 0
         local Elapsed = 0
 
-        Library:Connect(RunService.RenderStepped, function(DeltaT)
+        Library:Connect(game:GetService("RunService").RenderStepped, function(DeltaT)
             FrameCount += 1
             Elapsed += DeltaT
 
