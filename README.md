@@ -713,11 +713,7 @@ Popup notification system.
 ## Creation
 
 ```lua
-Library:Notify({
-    Title = "Success",
-    Description = "Injected successfully",
-    Time = 5
-})
+Library:Notification("Succes", 5, Library.Theme.Accent)
 ```
 
 ---
@@ -726,9 +722,9 @@ Library:Notify({
 
 | Parameter     | Type     |
 | ------------- | -------- |
-| `Title`       | `string` |
-| `Description` | `string` |
-| `Time`        | `number` |
+| `Name`       | `string` |
+| `Duration` | `number` |
+| `Color`        | `Color3` |
 
 ---
 
@@ -741,17 +737,3 @@ Displays active keybinds.
 ```lua
 local KeyList = Library:KeybindList()
 ```
-
----
-
-## Methods
-
-### `KeyList:Add(name, mode, key)`
-
-Adds a bind entry.
-
-```lua
-KeyList:Add("Aimbot", "Toggle", "E")
-```
-* UI gradients
-* Glow effects
