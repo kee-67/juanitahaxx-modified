@@ -4,6 +4,8 @@
     Made by samet
     This is a FREE ui release made by me (samet) on May 30 to celebrate my birthday, If anyone is selling this they are scammers.
 
+    MY ONLY ACCOUNT IS: joestar._3
+
     If you want to commission a ui:
     https://discord.gg/XsTteAwprs
 
