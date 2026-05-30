@@ -254,6 +254,10 @@ local Library = {
             Self.UnusedHolder.Instance:Destroy()
         end
 
+        if Self.NotifHolder then 
+            Self.NotifHolder.Instance:Destroy()
+        end
+
         Library = nil
         getgenv().Library = nil
     end
@@ -930,6 +934,7 @@ local Library = {
         writefile(Library.Directory .. Library.Folders.Themes .. "/Sky.json", '{"MenuKeybindModeDropdown":"Toggle","AccentTheming":{"Color":"#93eeff","Alpha":0},"BackgroundTheming":{"Color":"#141718","Alpha":0},"color":{"Color":"#ffffff","Alpha":0},"MenuKeybind":{"Key":"Enum.KeyCode.X","Mode":"Toggle"},"keybindModeDropdown":"Toggle","keybind2ModeDropdown":"Toggle","Hovered ElementTheming":{"Color":"#444949","Alpha":0},"keybind2ShowInKeybindsList":true,"target":"Head","OutlineTheming":{"Color":"#292d2e","Alpha":0},"keybind3ShowInKeybindsList":true,"InlineTheming":{"Color":"#1f2324","Alpha":0},"keybind":{"Key":"Enum.KeyCode.E","Mode":"Toggle"},"keybind3":{"Key":"Enum.KeyCode.R","Mode":"Toggle"},"keybind3ModeDropdown":"Toggle","ElementTheming":{"Color":"#2e3131","Alpha":0},"Element 2Theming":{"Color":"#454a4b","Alpha":0},"keybind2":{"Key":"Enum.KeyCode.F","Mode":"Toggle"},"ThemeName":"Sky","BorderTheming":{"Color":"#1a1d1d","Alpha":0},"AutoParry":false,"ConfigName":"","keybindShowInKeybindsList":true,"Inactive TextTheming":{"Color":"#868686","Alpha":0},"walkspeed":16,"TextTheming":{"Color":"#ffffff","Alpha":0},"MenuKeybindShowInKeybindsList":true,"textbox":"default"}')
         writefile(Library.Directory .. Library.Folders.Themes .. "/Magma.json", '{"MenuKeybindModeDropdown":"Toggle","AccentTheming":{"Color":"#e92b1a","Alpha":0},"BackgroundTheming":{"Color":"#221c1c","Alpha":0},"color":{"Color":"#ffffff","Alpha":0},"MenuKeybind":{"Key":"Enum.KeyCode.X","Mode":"Toggle"},"keybindModeDropdown":"Toggle","keybind2ModeDropdown":"Toggle","Hovered ElementTheming":{"Color":"#362a2a","Alpha":0},"keybind2ShowInKeybindsList":true,"target":"Head","OutlineTheming":{"Color":"#291d1d","Alpha":0},"keybind3ShowInKeybindsList":true,"InlineTheming":{"Color":"#1f1717","Alpha":0},"keybind":{"Key":"Enum.KeyCode.E","Mode":"Toggle"},"keybind3":{"Key":"Enum.KeyCode.R","Mode":"Toggle"},"keybind3ModeDropdown":"Toggle","ElementTheming":{"Color":"#292121","Alpha":0},"Element 2Theming":{"Color":"#363131","Alpha":0},"keybind2":{"Key":"Enum.KeyCode.F","Mode":"Toggle"},"ThemeName":"Magma","BorderTheming":{"Color":"#000000","Alpha":0},"AutoParry":true,"ConfigName":"","keybindShowInKeybindsList":true,"Inactive TextTheming":{"Color":"#867979","Alpha":0},"walkspeed":16,"TextTheming":{"Color":"#d0cfe3","Alpha":0},"MenuKeybindShowInKeybindsList":true,"textbox":"default"}')
         writefile(Library.Directory .. Library.Folders.Themes .. "/Sand.json", '{"MenuKeybindModeDropdown":"Toggle","AccentTheming":{"Color":"#ffe593","Alpha":0},"BackgroundTheming":{"Color":"#2d2e25","Alpha":0},"color":{"Color":"#ffffff","Alpha":0},"MenuKeybind":{"Key":"Enum.KeyCode.X","Mode":"Toggle"},"keybindModeDropdown":"Toggle","keybind2ModeDropdown":"Toggle","Hovered ElementTheming":{"Color":"#47473b","Alpha":0},"keybind2ShowInKeybindsList":true,"target":"Head","OutlineTheming":{"Color":"#585344","Alpha":0},"keybind3ShowInKeybindsList":true,"InlineTheming":{"Color":"#3f4137","Alpha":0},"keybind":{"Key":"Enum.KeyCode.E","Mode":"Toggle"},"keybind3":{"Key":"Enum.KeyCode.R","Mode":"Toggle"},"keybind3ModeDropdown":"Toggle","ElementTheming":{"Color":"#36362c","Alpha":0},"Element 2Theming":{"Color":"#414133","Alpha":0},"keybind2":{"Key":"Enum.KeyCode.F","Mode":"Toggle"},"ThemeName":"Sand","BorderTheming":{"Color":"#141403","Alpha":0},"AutoParry":false,"ConfigName":"","keybindShowInKeybindsList":true,"Inactive TextTheming":{"Color":"#888784","Alpha":0},"walkspeed":16,"TextTheming":{"Color":"#d0cfe3","Alpha":0},"MenuKeybindShowInKeybindsList":true,"textbox":"default"}')
+        writefile(Library.Directory .. Library.Folders.Themes .. "/Navy.json", '{"MenuKeybindModeDropdown":"Toggle","AccentTheming":{"Color":"#0066ff","Alpha":0},"BackgroundTheming":{"Color":"#1c1e24","Alpha":0},"color":{"Color":"#ffffff","Alpha":0},"Watermark":true,"keybind2ModeDropdown":"Toggle","keybindModeDropdown":"Toggle","Hovered ElementTheming":{"Color":"#282b31","Alpha":0},"keybind2ShowInKeybindsList":true,"ThemeName":"Navy","InlineTheming":{"Color":"#202229","Alpha":0},"textbox":"default","OutlineTheming":{"Color":"#252a36","Alpha":0},"keybind":{"Key":"Enum.KeyCode.E","Mode":"Toggle"},"MenuKeybind":{"Key":"Enum.KeyCode.X","Mode":"Toggle"},"BorderTheming":{"Color":"#030303","Alpha":0},"keybind3":{"Key":"Enum.KeyCode.R","Mode":"Toggle"},"keybind3ModeDropdown":"Toggle","ElementTheming":{"Color":"#1d202b","Alpha":0},"Keybind list":true,"keybind2":{"Key":"Enum.KeyCode.F","Mode":"Toggle"},"AutoParry":true,"keybind3ShowInKeybindsList":true,"Element 2Theming":{"Color":"#3e414b","Alpha":0},"keybindShowInKeybindsList":true,"ConfigName":"","Inactive TextTheming":{"Color":"#65697e","Alpha":0},"walkspeed":34,"TextTheming":{"Color":"#a5a4bb","Alpha":0},"MenuKeybindShowInKeybindsList":true,"target":"Head"}')
     end)
 
     do
@@ -1612,8 +1617,8 @@ local Library = {
                     Name = "\0",
                     Parent = Items["KeyButton"].Instance,
                     PaddingBottom = UDim.new(0, 2),
-                    PaddingRight = UDim.new(0, 2),
-                    PaddingLeft = UDim.new(0, 3)
+                    PaddingRight = UDim.new(0, 5),
+                    PaddingLeft = UDim.new(0, 6)
                 })             
                 
                 Items["KeybindWindow"] = Library:Create("TextButton", {
@@ -1753,7 +1758,7 @@ local Library = {
 
             local KeybindObject 
 
-            if Library.KeyList then 
+            if Library.KeyList and Data.Name ~= "Menu Keybind" then 
                 KeybindObject = Library.KeyList:Add("", "", "")
             end
 
@@ -1984,13 +1989,15 @@ local Library = {
                 Items["Watermark"] = Library:Create("Frame", {
                     Name = "\0",
                     Parent = Library.Holder.Instance,
-                    AnchorPoint = Vector2.new(1, 0),
-                    Position = UDim2.new(1, -10, 0, 10),
+                    AnchorPoint = Vector2.new(0, 0),
+                    Position = UDim2.new(0, 10, 0, GuiInset + 10),
                     Size = UDim2.new(0, 0, 0, 53),
                     BorderSizePixel = 0,
                     AutomaticSize = Enum.AutomaticSize.X,
                     BackgroundColor3 = Library.Theme["Background"]
                 }):AddToTheme({BackgroundColor3 = 'Background'})
+
+                Items["Watermark"]:MakeDraggable()
                 
                 Library:Create("UIStroke", {
                     Name = "\0",
@@ -2156,6 +2163,7 @@ local Library = {
                 return NewItem
             end
 
+            Self.Watermark = Watermark
             return setmetatable(Watermark, Library)
         end
 
@@ -2261,6 +2269,7 @@ local Library = {
             end
         
             Library.KeyList = KeybindList
+            Self.KeybindList = KeybindList
         
             function KeybindList:SetVisibility(Bool)
                 Items["KeybindList"].Instance.Visible = Bool
@@ -2291,6 +2300,20 @@ local Library = {
         
                 Items["Inline"]:Tween({Size = UDim2.new(0, Width + 14, 0, TargetHeight)}, KeybindTweenInfo)
                 Items["KeybindList"]:Tween({Size = UDim2.new(0, Width + 34, 0, TargetHeight + 28)}, KeybindTweenInfo)
+
+                local ActiveKeys = { }
+
+                for Index, Value in KeybindList.Keys do
+                    if Value.Showing then
+                        table.insert(ActiveKeys, Value.Object.Instance.Text)
+                    end
+                end
+        
+                if #ActiveKeys == 0 then 
+                    Items["KeybindList"].Instance.Visible = false
+                else
+                    Items["KeybindList"].Instance.Visible = true
+                end
             end
         
             function KeybindList:Add(Name, Mode, Key)
@@ -2676,6 +2699,12 @@ local Library = {
             function Window:SetOpen(Bool)
                 if Debounce then 
                     return 
+                end
+
+                for Index, Value in Window.Pages do 
+                    if Value.Debounce then 
+                        return 
+                    end
                 end
 
                 Debounce = true 
@@ -4804,6 +4833,28 @@ local Library = {
                             Library.MenuKeybind = Library.Flags["MenuKeybind"].Key
                         end
                     })
+
+                    if Self.Watermark then
+                        MenuSection:Toggle({
+                            Name = "Watermark",
+                            Flag = "Watermark",
+                            Default = true,
+                            Callback = function(Value)
+                                Self.Watermark:SetVisibility(Value)
+                            end
+                        })
+                    end
+
+                    if Self.KeybindList then 
+                        MenuSection:Toggle({
+                            Name = "Keybind list",
+                            Flag = "Keybind list",
+                            Default = true,
+                            Callback = function(Value)
+                                Self.KeybindList:SetVisibility(Value)
+                            end
+                        })
+                    end
                 end
 
                 local ConfigName 
