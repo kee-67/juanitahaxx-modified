@@ -3,6 +3,7 @@
     
     Made by samet
     This is a FREE ui release made by me (samet) on May 30 to celebrate my birthday, If anyone is selling this they are scammers.
+    The design credits for the ui goes to eskolzz. It was brought to life in luau by me.
 
     MY ONLY ACCOUNT IS: joestar._3
 
