@@ -1,23 +1,35 @@
-i've used ai to generate these docs so don't flame me.
-I'm not going to bother writing docs for this
+# Chatgpt was used for the documentation. Not bothering to write any
+---
+
+# Getting Started
+
+```lua
+local Window = Library:Window({
+    Name = "juanita"
+})
+```
+
+---
 
 # Window
 
-Creates the main UI.
+Creates the main UI container.
 
 ## Creation
 
 ```lua
 local Window = Library:Window({
-    Name = "Window Name"
+    Name = "Main Window"
 })
 ```
 
+---
+
 ## Parameters
 
-| Parameter | Type     |
-| --------- | -------- |
-| `Name`    | `string` |
+| Parameter | Type     | Description  |
+| --------- | -------- | ------------ |
+| `Name`    | `string` | Window title |
 
 ---
 
@@ -30,10 +42,6 @@ Opens or closes the window.
 ```lua
 Window:SetOpen(true)
 ```
-
-| Parameter | Type      |
-| --------- | --------- |
-| `bool`    | `boolean` |
 
 ---
 
@@ -61,8 +69,7 @@ local Page = Window:Page({
 
 # Page
 
-Pages are tabs inside the window if you didn't know.
-( I just like to name them pages instead of tabs)
+Creates a tab/page.
 
 ## Parameters
 
@@ -86,7 +93,7 @@ Page:Turn()
 
 ### `Page:Section(params)`
 
-Creates a section inside the page.
+Creates a section.
 
 ```lua
 local Section = Page:Section({
@@ -99,14 +106,21 @@ local Section = Page:Section({
 
 # Section
 
-Sections contain UI elements.
+Container for UI elements.
 
 ## Parameters
 
-| Parameter | Type     | Description             
-| --------- | -------- | ----------------------- |
-| `Name`    | `string` |                         |
-| `Side`    | `number` | `1` = left, `2` = right |
+| Parameter | Type     |
+| --------- | -------- |
+| `Name`    | `string` |
+| `Side`    | `number` |
+
+### Side Values
+
+| Value | Description |
+| ----- | ----------- |
+| `1`   | Left side   |
+| `2`   | Right side  |
 
 ---
 
@@ -117,58 +131,37 @@ Sections contain UI elements.
 Changes section title.
 
 ```lua
-Section:SetText("New Name")
+Section:SetText("Settings")
 ```
 
-| Parameter | Type     |
-| --------- | -------- |
-| `text`    | `string` |
-
 ---
 
-### `Section:Toggle(params)`
+### Element Constructors
 
-Creates a toggle.
-
----
-
-### `Section:Button(params)`
-
-Creates a button.
-
----
-
-### `Section:Slider(params)`
-
-Creates a slider.
-
----
-
-### `Section:Dropdown(params)`
-
-Creates a dropdown.
-
----
-
-### `Section:Label(params)`
-
-Creates a label.
+| Method               |
+| -------------------- |
+| `Section:Toggle()`   |
+| `Section:Button()`   |
+| `Section:Slider()`   |
+| `Section:Dropdown()` |
+| `Section:Label()`    |
+| `Section:Textbox()`  |
 
 ---
 
 # Toggle
 
-Boolean switch element.
+Boolean toggle element.
 
 ## Creation
 
 ```lua
 local Toggle = Section:Toggle({
-    Name = "Enabled",
-    Flag = "enabled_toggle",
+    Name = "Auto Farm",
+    Flag = "autofarm",
     Default = false,
     Callback = function(value)
-        print(value)
+
     end
 })
 ```
@@ -177,21 +170,19 @@ local Toggle = Section:Toggle({
 
 ## Parameters
 
-| Parameter  | Type       | Description            |
-| ---------- | ---------- | ---------------------- |
-| `Name`     | `string`   |                        |
-| `Flag`     | `string`   |                        |
-| `Default`  | `boolean`  | Default state          |
-| `Callback` | `function` | Called when changed    |
-| `Parent`   | `Instance` | Optional custom parent |
+| Parameter  | Type       |
+| ---------- | ---------- |
+| `Name`     | `string`   |
+| `Flag`     | `string`   |
+| `Default`  | `boolean`  |
+| `Callback` | `function` |
+| `Parent`   | `Instance` |
 
 ---
 
 ## Methods
 
 ### `Toggle:Set(bool)`
-
-Sets toggle state.
 
 ```lua
 Toggle:Set(true)
@@ -201,8 +192,6 @@ Toggle:Set(true)
 
 ### `Toggle:SetVisibility(bool)`
 
-Shows or hides toggle.
-
 ```lua
 Toggle:SetVisibility(false)
 ```
@@ -211,22 +200,20 @@ Toggle:SetVisibility(false)
 
 ### `Toggle:SetText(text)`
 
-Changes toggle text.
-
 ```lua
-Toggle:SetText("Godmode")
+Toggle:SetText("Enabled")
 ```
 
 ---
 
 ### `Toggle:Colorpicker(params)`
 
-Adds a colorpicker attached to the toggle.
+Attaches a colorpicker.
 
 ```lua
 local Picker = Toggle:Colorpicker({
     Flag = "accent",
-    Default = Color3.fromRGB(255, 0, 0),
+    Default = Color3.fromRGB(255,0,0),
     Alpha = 0,
     Callback = function(color, alpha)
 
@@ -234,23 +221,14 @@ local Picker = Toggle:Colorpicker({
 })
 ```
 
-## Colorpicker Parameters
-
-| Parameter  | Type       |
-| ---------- | ---------- |
-| `Flag`     | `string`   |
-| `Default`  | `Color3`   |
-| `Alpha`    | `number`   |
-| `Callback` | `function` |
-
 ---
 
 ### `Toggle:Keybind(params)`
 
-Adds a keybind attached to the toggle.
+Attaches a keybind.
 
 ```lua
-local Keybind = Toggle:Keybind({
+local Bind = Toggle:Keybind({
     Flag = "aimbot_bind",
     Default = Enum.KeyCode.E,
     Mode = "Toggle",
@@ -260,28 +238,19 @@ local Keybind = Toggle:Keybind({
 })
 ```
 
-## Keybind Parameters
-
-| Parameter  | Type           |
-| ---------- | -------------- |
-| `Flag`     | `string`       |
-| `Default`  | `Enum.KeyCode` |
-| `Mode`     | `string`       |
-| `Callback` | `function`     |
-
 ---
 
 # Button
 
-Clickable button element.
+Clickable button.
 
 ## Creation
 
 ```lua
 local Button = Section:Button({
-    Name = "Execute",
+    Name = "Inject",
     Callback = function()
-        print("Clicked")
+
     end
 })
 ```
@@ -302,7 +271,7 @@ local Button = Section:Button({
 
 ### `Button:Press()`
 
-Triggers the callback manually.
+Triggers callback manually.
 
 ```lua
 Button:Press()
@@ -321,7 +290,7 @@ Button:SetVisibility(true)
 ### `Button:SetText(text)`
 
 ```lua
-Button:SetText("Launch")
+Button:SetText("Execute")
 ```
 
 ---
@@ -369,8 +338,6 @@ local Slider = Section:Slider({
 
 ### `Slider:Set(value)`
 
-Sets slider value.
-
 ```lua
 Slider:Set(50)
 ```
@@ -395,7 +362,7 @@ Slider:SetText("Speed")
 
 # Dropdown
 
-Selectable dropdown menu.
+Selection element.
 
 ## Creation
 
@@ -403,7 +370,7 @@ Selectable dropdown menu.
 local Dropdown = Section:Dropdown({
     Name = "Target",
     Flag = "target",
-    Items = {"Head", "Torso", "Random"},
+    Items = {"Head", "Torso"},
     Default = "Head",
     Multi = false,
     Callback = function(value)
@@ -432,13 +399,11 @@ local Dropdown = Section:Dropdown({
 
 ### `Dropdown:Set(value)`
 
-Sets selected option.
-
 ```lua
 Dropdown:Set("Head")
 ```
 
-For multi dropdowns:
+Multi-dropdown:
 
 ```lua
 Dropdown:Set({"Head", "Torso"})
@@ -448,17 +413,13 @@ Dropdown:Set({"Head", "Torso"})
 
 ### `Dropdown:Add(option)`
 
-Adds a new option.
-
 ```lua
-Dropdown:Add("Legs")
+Dropdown:Add("Random")
 ```
 
 ---
 
 ### `Dropdown:SetOpen(bool)`
-
-Opens/closes dropdown.
 
 ```lua
 Dropdown:SetOpen(true)
@@ -468,19 +429,23 @@ Dropdown:SetOpen(true)
 
 ### `Dropdown:SetVisibility(bool)`
 
-Shows/hides dropdown.
+```lua
+Dropdown:SetVisibility(true)
+```
 
 ---
 
 ### `Dropdown:SetText(text)`
 
-Changes dropdown text.
+```lua
+Dropdown:SetText("Hit Part")
+```
 
 ---
 
 # Label
 
-Text label element.
+Static text label.
 
 ## Creation
 
@@ -489,15 +454,6 @@ local Label = Section:Label({
     Name = "Status: Idle"
 })
 ```
-
----
-
-## Parameters
-
-| Parameter | Type       |
-| --------- | ---------- |
-| `Name`    | `string`   |
-| `Parent`  | `Instance` |
 
 ---
 
@@ -521,37 +477,89 @@ Label:SetText("Injected")
 
 ### `Label:Colorpicker(params)`
 
-Adds a colorpicker to the label.
+Adds a colorpicker.
+
+---
+
+# Textbox
+
+Text input element.
+
+## Creation
+
+```lua
+local Textbox = Section:Textbox({
+    Name = "Username",
+    Flag = "username",
+    Placeholder = "enter text",
+    Default = "",
+    Callback = function(text)
+
+    end
+})
+```
+
+---
+
+## Parameters
+
+| Parameter     | Type       |
+| ------------- | ---------- |
+| `Name`        | `string`   |
+| `Flag`        | `string`   |
+| `Placeholder` | `string`   |
+| `Default`     | `string`   |
+| `Callback`    | `function` |
+
+---
+
+## Methods
+
+### `Textbox:Set(text)`
+
+```lua
+Textbox:Set("player")
+```
+
+---
+
+### `Textbox:SetVisibility(bool)`
+
+```lua
+Textbox:SetVisibility(false)
+```
+
+---
+
+### `Textbox:SetText(text)`
+
+```lua
+Textbox:SetText("Nickname")
+```
 
 ---
 
 # Colorpicker
 
-Advanced color selection element.
+Advanced HSV colorpicker.
 
 ## Methods
 
 ### `Colorpicker:Set(color, alpha)`
 
-Sets the selected color.
-
-```lua
-Colorpicker:Set(Color3.fromRGB(255, 0, 0), 0.5)
-```
-
 Supports:
 
+* `Color3`
+* Hex strings
+* RGB tables
+
 ```lua
-Color3
-Hex string
-RGB table
+Colorpicker:Set(Color3.fromRGB(255,0,0), 0.5)
 ```
 
 ---
 
 ### `Colorpicker:SetOpen(bool)`
-
-Opens/closes the picker.
 
 ```lua
 Colorpicker:SetOpen(true)
@@ -561,43 +569,64 @@ Colorpicker:SetOpen(true)
 
 ### `Colorpicker:SetVisibility(bool)`
 
-Shows/hides picker button.
+```lua
+Colorpicker:SetVisibility(true)
+```
 
 ---
 
 ### `Colorpicker:Update(isFromAlpha)`
 
-Updates picker internals.
+Updates internal picker state.
 
 ---
 
 ### `Colorpicker:SlidePalette(input)`
 
-Palette drag logic.
+Handles saturation/value dragging.
 
 ---
 
 ### `Colorpicker:SlideHue(input)`
 
-Hue slider logic.
+Handles hue dragging.
 
 ---
 
 ### `Colorpicker:SlideAlpha(input)`
 
-Transparency slider logic.
+Handles transparency dragging.
 
 ---
 
 # Keybind
 
-Keyboard/mouse binding element.
+Keyboard/mouse bind element.
+
+## Parameters
+
+| Parameter  | Type           |
+| ---------- | -------------- |
+| `Flag`     | `string`       |
+| `Default`  | `Enum.KeyCode` |
+| `Mode`     | `string`       |
+| `Callback` | `function`     |
+
+---
+
+## Modes
+
+| Mode     |
+| -------- |
+| `Toggle` |
+| `Hold`   |
+| `Always` |
+
+---
 
 ## Methods
 
 ### `Keybind:Set(key)`
-
-Sets keybind key or mode.
 
 ```lua
 Keybind:Set(Enum.KeyCode.E)
@@ -616,16 +645,110 @@ Keybind:Set({
 
 ### `Keybind:SetOpen(bool)`
 
-Opens/closes bind menu.
+```lua
+Keybind:SetOpen(true)
+```
 
 ---
 
 ### `Keybind:SetMode()`
 
-Updates bind mode.
+Updates mode state.
 
 ---
 
 ### `Keybind:Press(bool)`
 
-Handles bind activation state.
+Triggers bind manually.
+
+---
+
+# Watermark
+
+Top-right watermark UI.
+
+## Creation
+
+```lua
+local Watermark = Library:Watermark({
+    Name = "juanita"
+})
+```
+
+---
+
+## Parameters
+
+| Parameter | Type     |
+| --------- | -------- |
+| `Name`    | `string` |
+
+---
+
+## Methods
+
+### `Watermark:SetText(text)`
+
+```lua
+Watermark:SetText("juanita | fps: 240")
+```
+
+---
+
+### `Watermark:SetVisibility(bool)`
+
+```lua
+Watermark:SetVisibility(true)
+```
+
+---
+
+# Notifications
+
+Popup notification system.
+
+## Creation
+
+```lua
+Library:Notify({
+    Title = "Success",
+    Description = "Injected successfully",
+    Time = 5
+})
+```
+
+---
+
+## Parameters
+
+| Parameter     | Type     |
+| ------------- | -------- |
+| `Title`       | `string` |
+| `Description` | `string` |
+| `Time`        | `number` |
+
+---
+
+# Keybind List
+
+Displays active keybinds.
+
+## Creation
+
+```lua
+local KeyList = Library:KeybindList()
+```
+
+---
+
+## Methods
+
+### `KeyList:Add(name, mode, key)`
+
+Adds a bind entry.
+
+```lua
+KeyList:Add("Aimbot", "Toggle", "E")
+```
+* UI gradients
+* Glow effects
