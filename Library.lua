@@ -4228,7 +4228,6 @@ local Library = {
                     end
 
                     Flags[List.Flag] = Value
-                    Items["Value"].Instance.Text = table.concat(Value, ", ")
                 else
                     if not List.Options[Value] then
                         return
@@ -4249,7 +4248,6 @@ local Library = {
                     end
 
                     Flags[List.Flag] = Value
-                    Items["Value"].Instance.Text = Value
                 end
 
                 Library:SafeCall(List.Callback, List.Value)
