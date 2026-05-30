@@ -2,7 +2,7 @@ local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/samet
 
 -- EXAMPLE
 do
-    Window = Library:Window({Name = "juanitahaxx free release soon"})
+    Window = Library:Window({Name = "juanitahaxx free release"})
     local Watermark = Window:Watermark({Name = "juanitahaxx"})
     local KeybindList = Window:KeybindList()
 
