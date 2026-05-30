@@ -1,7 +1,7 @@
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/d9289d9d-60a8-4351-b72e-b456a8af6cdb" />
 
 
-# Chatgpt was used for the documentation. Not bothering to write any
+# Chatgpt was used for the documentation. Some stuff may be wrong
 ---
 
 # Getting Started
