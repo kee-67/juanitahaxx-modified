@@ -254,6 +254,10 @@ local Library = {
             Self.UnusedHolder.Instance:Destroy()
         end
 
+        for Index, Value in Library.Notifications do 
+            Value.Items.Notification.Instance:Destroy()
+        end
+
         if Self.NotifHolder then 
             Self.NotifHolder.Instance:Destroy()
         end
@@ -342,6 +346,8 @@ local Library = {
     end
 
     Library.Tween = function(Self, Properties, Info, IsRawItem)
+        if not Library then return end 
+
         local Object = Self.Instance or IsRawItem
         Info = Info or TweenInfo.new(Library.Animation.Time, Enum.EasingStyle[Library.Animation.Style], Enum.EasingDirection[Library.Animation.Direction])
 
@@ -1903,7 +1909,7 @@ local Library = {
             end)
     
             Library:Connect(UserInputService.InputBegan, function(Input, GPE)
-                if Keybind.Value == "None" then
+                if Keybind.Value == "none" then
                     return
                 end
     
@@ -2542,6 +2548,8 @@ local Library = {
         
                 Notification.Removing = true
         
+                if not Library then return end 
+
                 for Index, Value in Library.Notifications do
                     if Value == Notification then
                         table.remove(Library.Notifications, Index)
@@ -3374,11 +3382,13 @@ local Library = {
             end)
 
             function Button:Press()
-                Library:SafeCall(Button.Callback)
+                pcall(function() -- i have to do this so it doesnt error on unload
+                    Library:SafeCall(Button.Callback)
 
-                Items["Accent"]:Tween({BackgroundTransparency = 0, Size = UDim2.new(1, 0, 1, 0)})
-                task.wait(Library.Animation.Time - 0.1)
-                Items["Accent"]:Tween({BackgroundTransparency = 1, Size = UDim2.new(0, 0, 1, 0)})
+                    Items["Accent"]:Tween({BackgroundTransparency = 0, Size = UDim2.new(1, 0, 1, 0)})
+                    task.wait(Library.Animation.Time - 0.1)
+                    Items["Accent"]:Tween({BackgroundTransparency = 1, Size = UDim2.new(0, 0, 1, 0)})
+                end)
             end
 
             function Button:SetVisibility(Bool)
@@ -4990,4 +5000,4 @@ local Library = {
 end
 
 getgenv().Library = Library
-return Library
+return Library 
