@@ -3230,7 +3230,7 @@ local Library = {
                 local Keybind = {
                     Name = Data.Name or Data.name or Toggle.Name,
                     Flag = Data.Flag or Data.flag or (Data.Name or Data.name or Toggle.Name),
-                    Default = Data.Default or Data.default or Enum.KeyCode.E,
+                    Default = Data.Default or Data.default or nil,
                     Callback = Data.Callback or Data.callback or function() end,
                     Mode = Data.Mode or Data.mode or "Toggle",
 
@@ -4526,7 +4526,7 @@ local Library = {
                 local Keybind = {
                     Name = Data.Name or Data.name or Label.Name,
                     Flag = Data.Flag or Data.flag or (Data.Name or Data.name or Label.Name),
-                    Default = Data.Default or Data.default or Enum.KeyCode.E,
+                    Default = Data.Default or Data.default or nil,
                     Callback = Data.Callback or Data.callback or function() end,
                     Mode = Data.Mode or Data.mode or "Toggle",
 
@@ -4990,4 +4990,4 @@ local Library = {
 end
 
 getgenv().Library = Library
-return Library 
+return Library
