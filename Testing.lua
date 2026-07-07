@@ -4824,6 +4824,7 @@ local Library = {
 
                     Library:GetThemesList(ThemesDropdown)
                     ThemesDropdown:Set("Navy")
+                    Library:LoadConfig(readfile(ThemesFolder .. "Navy.json"))
                 end
                 
                 local MenuSection = SettingsPage:Section({Name = "Menu", Side = 2}) do
