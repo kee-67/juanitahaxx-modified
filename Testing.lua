@@ -13,10 +13,6 @@
     Please give credit if used or modified.
 ]]
 
-if getgenv().Library then
-    getgenv().Library:Exit()
-end
-
 cloneref = cloneref or function(...) return ... end 
 
 local Players = game:GetService("Players")
