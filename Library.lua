@@ -667,7 +667,8 @@ local Library = {
     end
 
     Library.Round = function(Self, Number, Float)
-        local Multiplier = 1 / (Float or 1)
+        Float = (Float and Float ~= 0) and Float or 1
+        local Multiplier = 1 / Float
         return math.floor(Number * Multiplier) / Multiplier
     end
 
